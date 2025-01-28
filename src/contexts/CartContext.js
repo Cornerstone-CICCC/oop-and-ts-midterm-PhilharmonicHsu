@@ -3,11 +3,12 @@ export class CartContext {
     this.cartItems = [];
     this.menuItems = [];
     this.products = [];
+    this.product = null;
 
     this.cartListeners = [];
     this.menuListeners = [];
     this.productListeners = [];
-
+    this.commonListeners = [];
 
     fetch("https://fakestoreapi.com/products")
       .then(response => response.json())
@@ -16,6 +17,8 @@ export class CartContext {
         this.menuItems = [...new Set(products.map(product => product.category))];
 
         this.notifyListeners("menu")
+        this.notifyListeners("cart")
+        this.notifyListeners("product")
       });
   }
 
@@ -28,9 +31,28 @@ export class CartContext {
         this.menuListeners.push(listener);
         break;
       case "product":
-        this.products.push(listener);
+        this.productListeners.push(listener);
+        break;
+      default:
+        this.commonListeners.push(listener);
         break;
     }
+  }
+
+  updateCartList() {
+    this.notifyListeners('cart')
+  }
+
+  showModal() {
+    this.notifyListeners('modal')
+  }
+
+  filterProductsByCategory(category) {
+    const filteredProducts = this.products.filter(product => product.category === category);
+
+    this.productListeners.forEach(listener => {
+      listener(filteredProducts)
+    })
   }
 
   notifyListeners(type) {
@@ -48,6 +70,11 @@ export class CartContext {
       case "product":
         this.productListeners.forEach(listener => {
           listener(this.products)
+        })
+        break;
+      default:
+        this.commonListeners.forEach(listener => {
+          listener(this.product)
         })
         break;
     }
