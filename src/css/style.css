@@ -1,1 +1,36 @@
 /* YOUR CSS HERE */
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+#menu.open {
+  left: 0;
+}
+
+.modal {
+  display: none;
+  z-index: 11;
+}
+
+#cart.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .product {
+    width: 100%;
+  }
+
+  #menu {
+    width: 200px;
+  }
+}
