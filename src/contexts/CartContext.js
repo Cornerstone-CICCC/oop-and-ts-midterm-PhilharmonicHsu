@@ -39,7 +39,40 @@ export class CartContext {
     }
   }
 
-  updateCartList() {
+  addProduct(product) {
+    const existingProduct = this.cartItems.find(item => item.id === product.id);
+    console.log(existingProduct)
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      this.cartItems.push({ ...product, quantity: 1 });
+    }
+
+    this.notifyListeners('cart')
+  }
+
+  removeProduct(id) {
+    this.cartItems = this.cartItems.filter(cartItem => cartItem.id !== id);
+    this.notifyListeners('cart')
+  }
+
+  increaseQuantity(id) {
+    const item = this.cartItems.find(cartItem => cartItem.id === id)
+
+    item.quantity += 1;
+
+    this.notifyListeners('cart')
+  }
+
+  decreaseQuantity(id) {
+    const item = this.cartItems.find(cartItem => cartItem.id === id)
+
+    if (item.quantity > 1) {
+      item.quantity -= 1;
+    } else {
+      this.cartItems = this.cartItems.filter(cartItem => cartItem.id !== id);
+    }
+
     this.notifyListeners('cart')
   }
 

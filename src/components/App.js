@@ -9,7 +9,6 @@ import {Footer} from "./Footer.js";
 export class App extends Component {
   render() {
     const container = document.createElement('div');
-    // container.className = 'container';
 
     const header = new Header({
       cartContext: this.props.cartContext

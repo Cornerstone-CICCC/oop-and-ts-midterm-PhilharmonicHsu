@@ -5,17 +5,6 @@ export class ProductItem extends Component {
     super(props);
   }
 
-  addToCart(product) {
-    const existingProduct = this.props.cartContext.cartItems.find(item => item.id === product.id);
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-    } else {
-      this.props.cartContext.cartItems.push({ ...product, quantity: 1 });
-    }
-
-    this.props.cartContext.updateCartList();
-  }
-
   render() {
     const productItem = document.createElement("div");
     productItem.className = "product bg-white rounded-lg m-4 p-6 w-full shadow-md transition-transform duration-300 ease-linear hover:shadow-lg hover:scale-105 cursor-pointer hover:-translate-y-2 hover:shadow-lg"
@@ -32,7 +21,7 @@ export class ProductItem extends Component {
       `;
 
     productItem.querySelector(".add-to-cart").addEventListener("click", () => {
-      this.addToCart(this.props.product);
+      this.props.cartContext.addProduct(this.props.product);
     });
 
     productItem.addEventListener("click", (e) => {
