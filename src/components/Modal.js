@@ -13,15 +13,15 @@ export class Modal extends Component {
 
     const modalContent = document.createElement("div");
     modalContent.id = 'modal-content';
-    modalContent.className = 'modal-content bg-white p-8 rounded-lg w-[90%] max-w-[500px] shadow-md flex flex-col justify-center';
+    modalContent.className = 'modal-content bg-white p-8 rounded-xl w-[90%] lg:max-w-[500px] shadow-md flex flex-col justify-center';
 
     modalContent.innerHTML = `
       <img src="${product.image}"
         alt="${product.title}"
         class="w-auto h-[300px] object-contain rounded-lg mb-4"
       >
-      <h2 class="mb-4">${product.title}</h2>
-      <p class="mx-0 my-2">${product.description}</p>
+      <h2 class="mb-4 text-xl">${product.title}</h2>
+      <p class="mx-0 my-2 text-gray-400">${product.description}</p>
       <p class="mx-0 my-2 text-lg font-bold text-green-500">$${product.price}</p>
       <button onclick="document.getElementById('product-modal').style.display='none'"
           class="bg-red-500 hover:bg-red-400 border-none px-4 py-2 rounded-md cursor-pointer text-normal mt-4 text-white"

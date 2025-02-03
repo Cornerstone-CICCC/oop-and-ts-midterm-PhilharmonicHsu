@@ -3,7 +3,7 @@ import { Component } from "../common/Component.js";
 export class Header extends Component {
   render() {
     const headerElement = document.createElement('header');
-    headerElement.className = "bg-sky-950 p-6 text-center text-3xl font-bold shadow-md fixed w-full z-10 flex justify-between items-center h-[80px]";
+    headerElement.className = "bg-gradient-to-b from-[#5A5A5A] to-[#836953] p-6 text-center text-3xl font-bold shadow-md fixed w-full z-10 flex justify-between items-center h-[80px]";
     headerElement.innerHTML = `<button id="menu-icon">
       <svg width="40" height="40" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M4.50005 7.5H16.5M4.49805 10.5H16.495M4.50005 13.5H16.495" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>

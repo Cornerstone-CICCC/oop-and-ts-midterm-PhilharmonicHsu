@@ -37,7 +37,7 @@ export class CartList extends Component {
   render() {
     const cartList = document.createElement('div');
     cartList.id = "cart";
-    cartList.className = "z-10 mt-[80px] fixed top-0 right-0 w-[300px] h-full bg-[#2c3e50] text-[#ecf0f1] p-4 overflow-y-auto shadow-md translate-x-full transition-transform duration-300 ease-linear";
+    cartList.className = "z-10 mt-[80px] fixed top-0 right-0 w-[300px] h-full bg-gradient-to-b from-[#836953] to-[#5A5A5A] text-[#ecf0f1] p-4 overflow-y-auto shadow-md translate-x-full transition-transform duration-300 ease-linear";
 
     this.cartListElement = cartList;
 
